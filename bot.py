@@ -19,13 +19,21 @@ async def on_message(message):
         msg = await message.channel.send('gang gang yo')
     if message.content.lower() == 'olle':
         msg = await message.channel.send('enna olle')
-    if message.content.startswith('@abaid'):
+    if message.content.lower() == 'blue balls':
+        msg = await message.channel.send('<@493980666879410177>')
+    if message.content.startswith('<@744622818721005630>'):
         msg = await message.channel.send('Olle goddess has been summoned.')
     if message.content == 'hocus pocus' and message.author.name == 'abaidisaac':
         def is_me(m):
             return m.author == client.user
         await message.channel.purge(limit=15, check=is_me)
     
+    rpg = ['rpg', 'Rpg', 'RPG']
+    for word in rpg:
+        if message.content.count(word) > 0:
+            if message.channel.name != 'rpg-2' and message.author.name != 'olle':
+                await message.channel.send('otha why here rpg, play in rpg-2 channel.')
+                    
     #bad_words = ["hocus pocus"]
     #for word in bad_words:
         #if message.content.count(word) > 0:
@@ -42,7 +50,8 @@ async def on_typing(channel,user,when):
             await channel.send(a)
 
 #async def on_typing(channel,user,when):
-    #print(channel.id)
+    #for i in client.get_all_members():
+        #print(i.name+'='+str(i.id))
 
 
 @client.event 
