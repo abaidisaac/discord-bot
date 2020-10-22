@@ -20,13 +20,21 @@ async def on_message(message):
     if message.content.lower() == 'olle':
         msg = await message.channel.send('enna olle')
     if message.content.lower() == 'blue balls':
-        msg = await message.channel.send('<@493980666879410177>')
+        msg = await message.channel.send('<@493980666879410177> has been called out.')
     if message.content.startswith('<@744622818721005630>'):
         msg = await message.channel.send('Olle goddess has been summoned.')
-    if message.content == 'hocus pocus' and message.author.name == 'abaidisaac':
+    if message.content.startswith('hocus pocus') and message.author.name == 'abaidisaac':
+        mes = message.content
+        count = int(mes.strip('hocus pocus '),base=0)
         def is_me(m):
             return m.author == client.user
-        await message.channel.purge(limit=15, check=is_me)
+        await message.channel.purge(limit=count, check=is_me)
+    if message.content.startswith('hocus abaid') and message.author.name == 'abaidisaac':
+        mes = message.content
+        count = int(mes.strip('hocus abaid '),base=0)
+        def is_me(m):
+            return m.author == message.author
+        await message.channel.purge(limit=count, check=is_me)
     
     rpg = ['rpg', 'Rpg', 'RPG']
     for word in rpg:
@@ -49,7 +57,6 @@ async def on_typing(channel,user,when):
         for a in random.sample(a,1):
             await channel.send(a)
 
-#async def on_typing(channel,user,when):
     #for i in client.get_all_members():
         #print(i.name+'='+str(i.id))
 
